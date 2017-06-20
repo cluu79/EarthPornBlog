@@ -3,7 +3,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 
-//mongoose.connect("mongodb://localhost/EarthPornBlog");
+mongoose.connect("mongodb://localhost/EarthPornBlog");
 
 // no need to write .ejs extensions
 app.set("view engine", "ejs");
@@ -20,6 +20,12 @@ var EarthPornSchema = new mongoose.Schema({
 });
 
 var EarthBlog = mongoose.model("EarthBlog", EarthPornSchema);
+
+//EarthBlog.create({
+//	title: "Test Blog",
+//	image:"https://i.redditmedia.com/kP8FbY0w96j-P0MkDlzOF0l7OCvLeWmzrq6oka9fAhI.jpg?w=1024&s=c6b27fe5670b79d2f0eec9e9e7e34cf5",
+//	body: "hello this is first blog post"
+//});
 
 app.get("/", function(req, res){
 	res.redirect("/blogs");
