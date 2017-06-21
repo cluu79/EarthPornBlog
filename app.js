@@ -5,10 +5,14 @@ var mongoose = require("mongoose");
 
 mongoose.connect("mongodb://localhost/EarthPornBlog");
 
+//put this above app.set or else css wont' work.
+app.use(express.static("public"));
+
+
 // no need to write .ejs extensions
 app.set("view engine", "ejs");
 
-app.use(express.static("public"));
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 
