@@ -69,6 +69,18 @@ app.get("/blogs/:id", function(req, res){
 	})
 	
 });
+
+//edit update
+app.get("/blogs/:id/edit", function(req, res){
+	EarthBlog.findById(req.params.id, function(err, foundBlog){
+		if(err){
+			res.redirect("/blogs");
+		}else{
+			res.render("edit",{blog: foundBlog});
+		}
+	});
+	
+});
 		
 		
 
