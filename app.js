@@ -12,8 +12,6 @@ app.use(express.static("public"));
 // no need to write .ejs extensions
 app.set("view engine", "ejs");
 
-
-
 app.use(bodyParser.urlencoded({extended: true}));
 
 var EarthPornSchema = new mongoose.Schema({
@@ -41,10 +39,8 @@ app.get("/blogs", function(req, res){
 			console.log("Error");
 		}else {
 			res.render("index", {blogs: blogs});
-		}
-		
-	});
-	
+		}		
+	});	
 });
 
 //create route
