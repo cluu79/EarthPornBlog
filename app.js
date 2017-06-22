@@ -59,7 +59,12 @@ app.post("/blogs", function(req,res){
 	});
 });
 
-
+app.get("/blogs/:id", function(req, res){
+	res.send("SHOW PAGE");
+	
+});
+		
+		
 
 
 app.listen(3000,function(){
