@@ -92,6 +92,20 @@ app.post("/blogs/:id", function(req,res){
 	});
 });
 
+//delete route
+app.get("/blogs/:id/delete", function(req, res){
+	//destroy blog
+	EarthBlog.findByIdAndRemove(req.params.id, function(err){
+		if(err){
+			res.redirect("/blogs");
+		}else{
+			res.redirect("/blogs");
+		}
+	})
+	
+	//res.send("you have the the delete page");
+});
+
 
 app.listen(3000,function(){
 	console.log("Server for Earth Porn Blog is Running");
