@@ -2,11 +2,14 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var methodOverride = require("method-override");
 
 mongoose.connect("mongodb://localhost/EarthPornBlog");
 
 //put this above app.set or else css wont' work.
 app.use(express.static("public"));
+
+app.use(methodOverride("_method"));
 
 
 // no need to write .ejs extensions
@@ -82,28 +85,27 @@ app.get("/blogs/:id/edit", function(req, res){
 })
 
 //update blog
-app.post("/blogs/:id", function(req,res){
-	EarthBlog.findByIdAndUpdate(req.params.id,req.body.blog, function(err,updatedBlog){
+app.put("/blogs/:id", function(req, res){
+	EarthBlog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
 		if(err){
 			res.redirect("/blogs");
-		}else{
+		}else {
 			res.redirect("/blogs/" + req.params.id);
+			
 		}
 	});
 });
 
 //delete route
-app.get("/blogs/:id/delete", function(req, res){
-	//destroy blog
+app.delete("/blogs/:id", function(req,res){
 	EarthBlog.findByIdAndRemove(req.params.id, function(err){
 		if(err){
 			res.redirect("/blogs");
 		}else{
 			res.redirect("/blogs");
+			
 		}
 	})
-	
-	//res.send("you have the the delete page");
 });
 
 
@@ -111,3 +113,7 @@ app.listen(3000,function(){
 	console.log("Server for Earth Porn Blog is Running");
 });
 
+
+	
+	
+	

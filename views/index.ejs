@@ -1,11 +1,6 @@
-<h1>first post</h1>
 <% include ./partials/headers %>
 
-<h3>second post</h3>
-
-
-
-<% blogs.forEach(function(blog){ %>
+	<% blogs.forEach(function(blog){ %>
 	<div>
 		<h2><%= blog.title %></h2>
 		<img src="<%=blog.image %>">
@@ -15,7 +10,5 @@
 		
 	</div>
 <% }) %>
-
-
-
+	
 <% include ./partials/footer %>

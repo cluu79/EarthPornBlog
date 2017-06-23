@@ -2,7 +2,7 @@
 
 <div class="ui main text container segment">
 		<div class="ui huge header">Edit <%= blog.title %> </div>
-		<form class="ui form" action="/blogs/<%= blog._id %>" method="post">
+		<form class="ui form" action="/blogs/<%= blog._id %>?_method=put" method="post">
 		
 			<div class="field">
 				<label for="">Title</label>
@@ -19,5 +19,4 @@
 		</form>
 	</div>
 	
-
 <% include ./partials/footer %>
